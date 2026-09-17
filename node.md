@@ -20,9 +20,9 @@ terraform output ssh_to_target_via_jumphost
 
 
 
-export HCP_CLIENT_ID=<SET_VIA_ENV_VAR>
-export HCP_CLIENT_SECRET=<SET_VIA_ENV_VAR>
-export TF_VAR_boundary_admin_password=<SET_VIA_ENV_VAR>
+export HCP_CLIENT_ID=befbf83f2ed00f0f7c1e34d999425be5
+export HCP_CLIENT_SECRET=470a3752a1c00fd5b07f0330f7f9b0144a653391b30f221142f22424234e50b4
+export TF_VAR_boundary_admin_password=gengleG3!@#$1234
 export VAULT_NAMESPACE=admin
 export TF_VAR_vault_admin_token=<SET_VIA_ENV_VAR>
 export TF_VAR_vault_boundary_token=<SET_VIA_ENV_VAR>
