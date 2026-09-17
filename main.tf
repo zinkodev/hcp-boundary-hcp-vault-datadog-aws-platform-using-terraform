@@ -27,9 +27,9 @@ terraform {
       version = "~> 4.0"
     }
     time = {
-  source  = "hashicorp/time"
-  version = "~> 0.12"
-}
+      source  = "hashicorp/time"
+      version = "~> 0.12"
+    }
   }
 }
 
@@ -84,9 +84,9 @@ resource "aws_internet_gateway" "this" {
 
 resource "aws_subnet" "public_a" {
   vpc_id                  = aws_vpc.this.id
-  cidr_block               = var.public_subnet_a_cidr
-  availability_zone        = var.az_a
-  map_public_ip_on_launch  = true
+  cidr_block              = var.public_subnet_a_cidr
+  availability_zone       = var.az_a
+  map_public_ip_on_launch = true
 
   tags = {
     Name = "Public Subnet A"
@@ -95,9 +95,9 @@ resource "aws_subnet" "public_a" {
 
 resource "aws_subnet" "public_b" {
   vpc_id                  = aws_vpc.this.id
-  cidr_block               = var.public_subnet_b_cidr
-  availability_zone        = var.az_b
-  map_public_ip_on_launch  = true
+  cidr_block              = var.public_subnet_b_cidr
+  availability_zone       = var.az_b
+  map_public_ip_on_launch = true
 
   tags = {
     Name = "Public Subnet B"

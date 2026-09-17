@@ -142,3 +142,17 @@ variable "hvn_id" {
   type    = string
   default = "hvn"
 }
+
+### Datadog ###
+
+variable "datadog_api_key" {
+  description = "Datadog Agent API key"
+  type        = string
+  sensitive   = true
+}
+
+variable "datadog_site" {
+  description = "Datadog site"
+  type        = string
+  default     = "datadoghq.com"
+}

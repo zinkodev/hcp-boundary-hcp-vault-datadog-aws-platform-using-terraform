@@ -33,3 +33,13 @@ output "boundary_target_vault_id" {
 output "boundary_connect_vault_command" {
   value = "boundary connect ssh -target-id ${boundary_target.ssh_target_vault.id}"
 }
+
+output "boundary_target_worker_vault_id" {
+  description = "Boundary target ID for SSH access to the self-managed worker through Vault"
+  value       = boundary_target.boundary_worker_vault.id
+}
+
+output "boundary_connect_worker_vault_command" {
+  description = "Boundary command for Vault-authenticated SSH access to the self-managed worker"
+  value       = "boundary connect ssh -target-id ${boundary_target.boundary_worker_vault.id}"
+}

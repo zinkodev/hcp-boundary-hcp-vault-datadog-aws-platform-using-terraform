@@ -19,7 +19,7 @@ resource "hcp_hvn_route" "this" {
 
 resource "aws_vpc_peering_connection_accepter" "this" {
   vpc_peering_connection_id = hcp_aws_network_peering.this.provider_peering_id
-  auto_accept                = true
+  auto_accept               = true
 }
 
 resource "aws_route" "to_hvn" {

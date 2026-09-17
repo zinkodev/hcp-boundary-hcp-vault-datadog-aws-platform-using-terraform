@@ -65,12 +65,12 @@ resource "boundary_credential_store_vault" "vault_store" {
 }
 
 resource "boundary_credential_library_vault_ssh_certificate" "ssh_cert_lib" {
-  name                 = "ssh-cert-lib"
-  credential_store_id  = boundary_credential_store_vault.vault_store.id
-  path                 = "${var.ssh_ca_mount_path}/sign/${var.ssh_ca_role_name}"
-  username             = "ubuntu"
-  key_type             = "rsa"
-  key_bits             = 2048
+  name                = "ssh-cert-lib"
+  credential_store_id = boundary_credential_store_vault.vault_store.id
+  path                = "${var.ssh_ca_mount_path}/sign/${var.ssh_ca_role_name}"
+  username            = "ubuntu"
+  key_type            = "rsa"
+  key_bits            = 2048
 }
 
 resource "boundary_target" "ssh_target_vault" {
@@ -88,5 +88,27 @@ resource "boundary_target" "ssh_target_vault" {
 
   injected_application_credential_source_ids = [
     boundary_credential_library_vault_ssh_certificate.ssh_cert_lib.id
+  ]
+}
+
+resource "boundary_target" "boundary_worker_vault" {
+  name         = "Self-Managed-Worker-Vault"
+  description  = "Self-managed Boundary worker accessed using Vault-signed SSH certificates"
+  type         = "ssh"
+  scope_id     = var.boundary_project_scope_id
+  default_port = 22
+  address      = aws_instance.boundary_worker.private_ip
+
+  session_max_seconds      = 28800
+  session_connection_limit = -1
+
+  egress_worker_filter = "\"private\" in \"/tags/type\""
+
+  injected_application_credential_source_ids = [
+    boundary_credential_library_vault_ssh_certificate.ssh_cert_lib.id
+  ]
+
+  depends_on = [
+    null_resource.trust_vault_ca_worker
   ]
 }
