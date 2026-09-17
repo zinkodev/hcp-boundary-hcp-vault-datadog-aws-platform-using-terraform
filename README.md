@@ -347,3 +347,8 @@ terraform destroy
 ```
 
 Review the plan before confirming. Destruction removes the AWS infrastructure and Terraform-managed Boundary/Vault resources. A later `terraform apply` requires fresh, valid environment variables and a renewable Boundary Vault token.
+
+Result 
+
+<img width="1700" height="1066" alt="image" src="https://github.com/user-attachments/assets/9eff7035-3f8f-4019-9636-4ad45f784509" />
+
