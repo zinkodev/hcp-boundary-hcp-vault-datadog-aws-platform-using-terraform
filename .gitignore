@@ -1,0 +1,17 @@
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+.env
+*.pem
+*.key
+.vscode/
+.idea/
+.DS_Store
+.env
+*.tfvars
+*.tfvars.json
+secret*
+secrets/
+node.md
